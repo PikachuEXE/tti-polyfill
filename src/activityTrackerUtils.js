@@ -81,7 +81,8 @@ const requestCreatingNodeNames =
 function subtreeContainsNodeName(nodes, nodeNames) {
   for (const node of nodes) {
     if (nodeNames.includes(node.nodeName.toLowerCase()) ||
-        subtreeContainsNodeName(node.children, nodeNames)) {
+        (node.children != null &&
+          subtreeContainsNodeName(node.children, nodeNames))) {
       return true;
     }
   }
